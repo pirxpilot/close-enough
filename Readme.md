@@ -1,7 +1,7 @@
 
 # close-enough
 
-  Compares strings based on the number of similar words[D[D[D
+  Compares strings based on the number of similar words
 
 ## Installation
 
