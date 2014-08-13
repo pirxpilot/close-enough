@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/code42day/close-enough/issues"
   },
-  "homepage": "https://github.com/code42day/close-enough"
+  "homepage": "https://github.com/code42day/close-enough",
+  "dependencies": {
+    "latinize": "^0.1.0"
+  }
 }

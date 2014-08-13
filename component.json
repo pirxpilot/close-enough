@@ -10,7 +10,6 @@
   "main": "index.js",
   "scripts": [
     "index.js",
-    "lib/compare.js",
-    "lib/latinize.js"
+    "lib/compare.js"
   ]
 }
