@@ -43,6 +43,13 @@ describe('close-enough', function() {
     assert(ce().generics(['def', 'xyz', 'ttt']).compare('abc def', 'abc xyz'));
   });
 
+  it('undefined is treated as an empty string', function() {
+    assert(!ce().compare('abc def'));
+    assert(ce().compare(null, undefined));
+    assert(ce().compare(''));
+    assert(ce().compare());
+  });
+
 
 
 });
