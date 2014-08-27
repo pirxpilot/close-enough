@@ -1,4 +1,10 @@
 
+0.0.4 / 2014-08-27
+==================
+
+ * add string comparison
+ * add / to the list of characters treated as whitespace
+
 0.0.3 / 2014-08-26
 ==================
 
