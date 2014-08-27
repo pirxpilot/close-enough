@@ -28,6 +28,13 @@ describe('close-enough', function() {
 
   it('spearators do not matter', function() {
     assert(ce().compare('ąBC-def', 'DĘf abc'));
+
+    assert(ce().compare('ab cd ef', 'abc def'));
+
+    assert(ce().compare(
+      'Holiday Inn Express Hotel & Suites Phoenix Downtown-Ballpark - Phoenix',
+      'Holiday Inn Express Hotel & Suites Phoenix Downtown/Ball Park'
+    ));
   });
 
   it('extra words are ignored', function() {
@@ -44,7 +51,6 @@ describe('close-enough', function() {
   });
 
   it('undefined is treated as an empty string', function() {
-    assert(!ce().compare('abc def'));
     assert(ce().compare(null, undefined));
     assert(ce().compare(''));
     assert(ce().compare());
