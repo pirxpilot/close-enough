@@ -24,6 +24,9 @@ describe('close-enough', function() {
 
   it('spaces do not matter', function() {
     assert(ce().compare('ąBC    def', 'DĘf abc'));
+    assert(ce().compare('Les Battées', 'Les Battees'));
+    assert(ce().compare('Hotel Première Classe', 'Hotel Premiere Classe'));
+    assert(ce().compare('La Réserve au Pavillon de Château Raba', 'La Reserve au Pavillon de Chateau'));
   });
 
   it('spearators do not matter', function() {
