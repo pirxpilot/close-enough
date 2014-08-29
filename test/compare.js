@@ -58,7 +58,26 @@ describe('close-enough', function() {
     assert(ce().compare(''));
     assert(ce().compare());
   });
+});
 
+describe('score', function() {
+  it('should count differences in strings', function() {
+    var a = '10 Niederkirchnerstraße, Germany, Berlin',
+      b = '10 Niederkirchnerstr., Germany, Berlin',
+      c = '10 Niederkirchnerstrasse, Germany, Berlin',
+      d = '10 Niederkirchner Strasse, Germany, Berlin, Europ';
 
+    assert.equal(ce().score(a, b), 1/5);
+    assert.equal(ce().score(a, c), 1/5);
+    assert.equal(ce().score(a, d), 1/5);
+    assert.equal(ce().score(b, d), 1/5);
 
+  });
+
+  it('should return 0 for strings we consider equal', function() {
+    assert.equal(ce().score(), 0);
+    assert.equal(ce().score('ab cd ef', 'abc def'), 0);
+    assert.equal(ce().score('abc', 'abc'), 0);
+    assert.equal(ce().score('ab cd ef', 'ab ef'), 0);
+  });
 });
