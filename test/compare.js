@@ -29,7 +29,7 @@ describe('close-enough', function() {
     assert(ce().compare('La Réserve au Pavillon de Château Raba', 'La Reserve au Pavillon de Chateau'));
   });
 
-  it('spearators do not matter', function() {
+  it('separators do not matter', function() {
     assert(ce().compare('ąBC-def', 'DĘf abc'));
 
     assert(ce().compare('ab cd ef', 'abc def'));
@@ -57,6 +57,16 @@ describe('close-enough', function() {
     assert(ce().compare(null, undefined));
     assert(ce().compare(''));
     assert(ce().compare());
+  });
+
+  it ('apply synonims when comparing strings', function() {
+    assert(!ce().synonims({
+      'defzz': 'xyz',
+      'def': 'aaa'
+    }).compare('abc def', 'abc xyz'), 'still different with synonims');
+    assert(ce().synonims({
+      'def': 'xyz'
+    }).compare('abc def', 'abc xyz'), 'the same with synonims');
   });
 });
 
