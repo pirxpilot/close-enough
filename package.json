@@ -1,6 +1,6 @@
 {
   "name": "close-enough",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "String comparison allowing for arbitrary differences",
   "main": "index.js",
   "directories": {
