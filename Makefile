@@ -1,19 +1,23 @@
-all: lint test build
+PROJECT=close-enough
+
+all: check build
+
+check: lint
 
 lint:
-	jshint index.js lib test
+	jshint index.js
 
+build: build/build.js
 
-test:
-	mocha
+build/build.js: node_modules index.js
+	mkdir -p build
+	browserify --require ./index.js:$(PROJECT) --outfile $@
 
-build: components index.js
-	@component build --dev
-
-components: component.json
-	@component install --dev
+node_modules: package.json
+	npm install
 
 clean:
-	rm -fr build components
+	rm -fr build node_modules
 
-.PHONY: clean lint test all
+.PHONY: clean lint check all build
+
