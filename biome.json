@@ -46,6 +46,9 @@
         "noUselessElse": "error",
         "useNumberNamespace": "error",
         "useSingleVarDeclarator": "error"
+      },
+      "suspicious": {
+        "useIterableCallbackReturn": "off"
       }
     }
   }
