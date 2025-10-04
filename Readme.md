@@ -1,38 +1,107 @@
+[![NPM version][npm-image]][npm-url]
+[![Build Status][build-image]][build-url]
+[![Dependency Status][deps-image]][deps-url]
 
 # close-enough
 
-  Compares strings based on the number of similar words
+String comparison allowing for arbitrary differences.
 
-## Installation
+## Install
 
-  Install with [component(1)](http://component.io):
+```sh
+$ npm install --save close-enough
+```
 
-    $ component install code42day/close-enough
+## Usage
 
-## API
+```javascript
+const closeEnough = require('close-enough');
+
+// Create a comparator instance
+const ce = closeEnough();
+
+// Basic string comparison
+ce.compare('Hello World', 'hello world'); // true - case insensitive
+ce.compare('abc def', 'def abc'); // true - word order doesn't matter
+ce.compare('café', 'cafe'); // true - diacritical marks are ignored
+
+// Different strings
+ce.compare('abc def', 'abc xyz'); // false
+
+// Separators and spacing are normalized
+ce.compare('hello-world', 'hello world'); // true
+ce.compare('hello/world', 'hello_world'); // true
+ce.compare('hello   world', 'hello world'); // true
+
+// Extra words are ignored (shorter string must be subset of longer)
+ce.compare('abc def', 'abc zzz def'); // true
+ce.compare('abc def ghi', 'abc def'); // true
+
+// Get similarity score (0 = identical, higher = more different)
+ce.score('hello world', 'hello world'); // 0
+ce.score('hello world', 'hello earth'); // 0.5
+```
+
+### Advanced Usage
+
+#### Filtering Generic Words
+
+Remove common words that should be ignored during comparison:
+
+```javascript
+const ce = closeEnough().generics(['hotel', 'inn', 'suites']);
+
+ce.compare('Holiday Inn Hotel', 'Holiday Suites'); // true
+```
+
+#### Using Synonyms
+
+Define words that should be treated as equivalent:
+
+```javascript
+const ce = closeEnough().synonims({
+  'street': 'st',
+  'avenue': 'ave',
+  'road': 'rd'
+});
+
+ce.compare('Main Street', 'Main St'); // true
+ce.compare('Park Avenue', 'Park Ave'); // true
+```
+
+#### Chaining Configuration
+
+You can chain multiple configuration methods:
+
+```javascript
+const ce = closeEnough()
+  .generics(['hotel', 'inn', 'resort'])
+  .synonims({
+    'street': 'st',
+    'avenue': 'ave'
+  });
+
+ce.compare('Grand Hotel on Main Street', 'Grand Inn on Main St'); // true
+```
+
+### API
+
+- `compare(a, b)` - Returns `true` if strings are considered close enough, `false` otherwise
+- `score(a, b)` - Returns a numeric score indicating difference (0 = identical)
+- `generics(array)` - Configure generic words to ignore during comparison
+- `synonims(object)` - Configure word synonyms for comparison
 
 
 
 ## License
 
-  The MIT License (MIT)
+MIT © [Damian Krzeminski][https://github.com/pirxpilot]
 
-  Copyright (c) 2014 <copyright holders>
+[npm-image]: https://img.shields.io/npm/v/close-enough
+[npm-url]: https://npmjs.org/package/close-enough
 
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files (the "Software"), to deal
-  in the Software without restriction, including without limitation the rights
-  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  copies of the Software, and to permit persons to whom the Software is
-  furnished to do so, subject to the following conditions:
+[build-url]: https://github.com/pirxpilot/close-enough/actions/workflows/check.yaml
+[build-image]: https://img.shields.io/github/actions/workflow/status/pirxpilot/close-enough/check.yaml?branch=main
 
-  The above copyright notice and this permission notice shall be included in
-  all copies or substantial portions of the Software.
-
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-  THE SOFTWARE.
+[deps-image]: https://img.shields.io/librariesio/release/npm/close-enough
+[deps-url]: https://libraries.io/npm/close-enough

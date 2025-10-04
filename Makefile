@@ -1,19 +1,15 @@
-all: lint test build
+check: lint test
 
 lint:
-	jshint index.js lib test
+	./node_modules/.bin/biome ci
 
+format:
+	./node_modules/.bin/biome check --fix
 
 test:
-	mocha
+	node --test $(TEST_OPTS)
 
-build: components index.js
-	@component build --dev
+test-cov: TEST_OPTS := --experimental-test-coverage
+test-cov: test
 
-components: component.json
-	@component install --dev
-
-clean:
-	rm -fr build components
-
-.PHONY: clean lint test all
+.PHONY: check format lint test test-cov
