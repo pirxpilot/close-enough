@@ -3,11 +3,9 @@
   "version": "0.1.0",
   "description": "String comparison allowing for arbitrary differences",
   "exports": "./lib/compare.js",
-  "directories": {
-    "test": "test"
-  },
+  "type": "module",
   "scripts": {
-    "test": "make test"
+    "test": "make check"
   },
   "repository": {
     "type": "git",

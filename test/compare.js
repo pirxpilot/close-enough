@@ -1,7 +1,6 @@
-const assert = require('node:assert');
-const { describe, it } = require('node:test');
-
-const ce = require('..');
+import assert from 'node:assert';
+import { describe, it } from 'node:test';
+import ce from '../lib/compare.js';
 
 describe('close-enough', () => {
   it('identical words are close enough', () => {
