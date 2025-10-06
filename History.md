@@ -1,4 +1,11 @@
 
+1.0.0 / 2025-10-06
+==================
+
+ * replace `latinize` with `transliterate`
+ * use Set to keep track of generics and to compare Arrays
+ * transition to ESM format
+
 0.1.0 / 2014-09-01
 ==================
 
