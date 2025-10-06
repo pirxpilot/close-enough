@@ -2,28 +2,32 @@
   "name": "close-enough",
   "version": "0.1.0",
   "description": "String comparison allowing for arbitrary differences",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
+  "exports": "./lib/compare.js",
+  "type": "module",
   "scripts": {
-    "test": "make test"
+    "test": "make check"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/code42day/close-enough"
+    "url": "git+https://github.com/pirxpilot/close-enough.git"
   },
   "keywords": [
     "string",
     "compare"
   ],
-  "author": "Damian Krzeminski <pirxpilot@code42day.com>",
+  "author": "Damian Krzeminski <pirxpilot@furkot.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/code42day/close-enough/issues"
   },
   "homepage": "https://github.com/code42day/close-enough",
+  "devDependencies": {
+    "@biomejs/biome": "2.2.5"
+  },
+  "files": [
+    "lib"
+  ],
   "dependencies": {
-    "latinize": "^0.1.0"
+    "@sindresorhus/transliterate": "^2.0.0"
   }
 }
