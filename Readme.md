@@ -95,7 +95,7 @@ ce.compare('Grand Hotel on Main Street', 'Grand Inn on Main St'); // true
 
 ## License
 
-MIT © [Damian Krzeminski][https://github.com/pirxpilot]
+MIT © [Damian Krzeminski](https://github.com/pirxpilot)
 
 [npm-image]: https://img.shields.io/npm/v/close-enough
 [npm-url]: https://npmjs.org/package/close-enough
