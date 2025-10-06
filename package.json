@@ -21,13 +21,13 @@
     "url": "https://github.com/code42day/close-enough/issues"
   },
   "homepage": "https://github.com/code42day/close-enough",
-  "dependencies": {
-    "latinize": "^0.1.0"
-  },
   "devDependencies": {
     "@biomejs/biome": "2.2.5"
   },
   "files": [
     "lib"
-  ]
+  ],
+  "dependencies": {
+    "@sindresorhus/transliterate": "^2.0.0"
+  }
 }

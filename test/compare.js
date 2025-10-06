@@ -86,8 +86,8 @@ describe('score', () => {
     const d = '10 Niederkirchner Strasse, Germany, Berlin, Europ';
 
     assert.equal(ce().score(a, b), 1 / 5);
-    assert.equal(ce().score(a, c), 1 / 5);
-    assert.equal(ce().score(a, d), 1 / 5);
+    assert.equal(ce().score(a, c), 0);
+    assert.equal(ce().score(a, d), 0);
     assert.equal(ce().score(b, d), 1 / 5);
   });
 
