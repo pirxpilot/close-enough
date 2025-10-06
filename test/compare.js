@@ -57,23 +57,23 @@ describe('close-enough', () => {
     assert(ce().compare());
   });
 
-  it('apply synonims when comparing strings', () => {
+  it('apply synonyms when comparing strings', () => {
     assert(
       !ce()
-        .synonims({
+        .synonyms({
           defzz: 'xyz',
           def: 'aaa'
         })
         .compare('abc def', 'abc xyz'),
-      'still different with synonims'
+      'still different with synonyms'
     );
     assert(
       ce()
-        .synonims({
+        .synonyms({
           def: 'xyz'
         })
         .compare('abc def', 'abc xyz'),
-      'the same with synonims'
+      'the same with synonyms'
     );
   });
 });

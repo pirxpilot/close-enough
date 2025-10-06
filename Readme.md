@@ -59,7 +59,7 @@ ce.compare('Holiday Inn Hotel', 'Holiday Suites'); // true
 Define words that should be treated as equivalent:
 
 ```javascript
-const ce = closeEnough().synonims({
+const ce = closeEnough().synonyms({
   'street': 'st',
   'avenue': 'ave',
   'road': 'rd'
@@ -76,7 +76,7 @@ You can chain multiple configuration methods:
 ```javascript
 const ce = closeEnough()
   .generics(['hotel', 'inn', 'resort'])
-  .synonims({
+  .synonyms({
     'street': 'st',
     'avenue': 'ave'
   });
@@ -89,7 +89,7 @@ ce.compare('Grand Hotel on Main Street', 'Grand Inn on Main St'); // true
 - `compare(a, b)` - Returns `true` if strings are considered close enough, `false` otherwise
 - `score(a, b)` - Returns a numeric score indicating difference (0 = identical)
 - `generics(array)` - Configure generic words to ignore during comparison
-- `synonims(object)` - Configure word synonyms for comparison
+- `synonyms(object)` - Configure word synonyms for comparison
 
 
 
